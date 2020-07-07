@@ -28,23 +28,21 @@ extension URL {
     }
     
     /**
-     Returns the subdirectory URLs (if the url is a directory)
+     Get the URLs of files inside a directory
+     
+     - returns:
+     An array including all the urls of files in the specific directory.
+     
+     - parameters:
+        - includeHiddenFiles: Wether or not hidden files should be included in the result
+     
      */
-    public func subURLs(includeHiddenFiles: Bool) -> [URL] {
+    public func subURLs(includeHiddenFiles: Bool = false) -> [URL] {
         guard self.isDirectory else { return [URL]() }
         var urls = [URL]()
-        var options: FileManager.DirectoryEnumerationOptions
-        if includeHiddenFiles {
-            options = [
-                .skipsHiddenFiles,
-                .skipsPackageDescendants,
-                .skipsSubdirectoryDescendants,
-            ]
-        } else {
-            options = [
-                .skipsPackageDescendants,
-                .skipsSubdirectoryDescendants,
-            ]
+        var options: FileManager.DirectoryEnumerationOptions = [.skipsSubdirectoryDescendants]
+        if !includeHiddenFiles {
+            options.insert(.skipsHiddenFiles)
         }
         guard let enumerator = FileManager.default.enumerator(at: self,includingPropertiesForKeys: nil, options: options) else { return [URL]() }
         while let fileURL = enumerator.nextObject() as? URL {

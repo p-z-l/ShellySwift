@@ -18,7 +18,7 @@ if url.isFile {
     print("It's a file")
 } else if url.isDirectory {
     // Get the subdirectory URLs of a URL:
-    for url in url.subURLs {
+    for url in url.subURLs() {
         print(url.lastPathComponent)
     }
 }
