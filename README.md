@@ -2,6 +2,9 @@
 
 File operations for Swift made easier.
 
+## Install:
+Swift Package: `https://github.com/p-z-l/ShellySwift.git`
+
 ## How to use:
 
 ```Swift
