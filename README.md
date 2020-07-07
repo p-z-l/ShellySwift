@@ -1,3 +1,3 @@
 # ShellySwift
 
-A description of this package.
+File operations for Swift made easier.
