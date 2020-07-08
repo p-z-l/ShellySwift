@@ -10,7 +10,7 @@ extension URL {
     }
     
     /**
-     If the url is a directory
+     If the url targets to a directory
      */
     public var isDirectory: Bool {
         var result : ObjCBool = false
@@ -19,12 +19,25 @@ extension URL {
     }
     
     /**
-     If the url is a file
+     If the url targets to a file
      */
     public var isFile: Bool {
         var result : ObjCBool = false
         FileManager.default.fileExists(atPath: self.path, isDirectory: &result)
         return !result.boolValue
+    }
+    
+    /**
+     The content of the target file as String
+     
+     - returns:
+        The content of the target file as String, returns nil if the URL does not exist or the target file is not a plain-text file
+     
+     - parameters:
+         - encoding: The encoding used for encode the file
+     */
+    public func contentString(encoding: String.Encoding = .utf8) -> String? {
+        return try? String(contentsOf: self, encoding: encoding)
     }
     
     /**
