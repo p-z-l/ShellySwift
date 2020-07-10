@@ -28,6 +28,13 @@ extension URL {
     }
     
     /**
+     A convenience call of `self.subURLs()`
+     */
+    public var subURLs: [URL] {
+        return self.subURLs()
+    }
+    
+    /**
      The content of the target file as String
      
      - returns:
