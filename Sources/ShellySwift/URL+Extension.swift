@@ -10,7 +10,7 @@ extension URL {
     }
     
     /**
-     If the url targets to a directory
+     If the URL targets to a directory
      */
     public var isDirectory: Bool {
         var result : ObjCBool = false
@@ -19,7 +19,19 @@ extension URL {
     }
     
     /**
-     If the url targets to a file
+     If the URL targets to a plain text file
+     */
+    var isPlainTextFile: Bool {
+        do {
+            let _ = try String(contentsOf: self)
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    /**
+     If the URL targets to a file
      */
     public var isFile: Bool {
         var result : ObjCBool = false
@@ -32,6 +44,13 @@ extension URL {
      */
     public var subURLs: [URL] {
         return self.subURLs()
+    }
+    
+    /**
+     The level of the URL, returns 0 in the case of a remote URL
+     */
+    public var level: Int {
+        return self.pathComponents.count
     }
     
     /**
