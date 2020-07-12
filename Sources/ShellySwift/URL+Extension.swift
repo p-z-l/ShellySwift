@@ -91,4 +91,58 @@ extension URL {
         return urls
     }
     
+    /**
+     Returns a Boolean value indicating whether the path components of the first argument is more than that of the second argument.
+     
+     - parameters:
+        - lhs: A value to compare.
+        - rhs: Another value to compare.
+     */
+    static public func >(lhs: URL, rhs: URL) -> Bool {
+        return lhs.level > rhs.level
+    }
+    
+    /**
+     Returns a Boolean value indicating whether the path components of the first argument is less than that of the second argument.
+     
+     - parameters:
+        - lhs: A value to compare.
+        - rhs: Another value to compare.
+     */
+    static public func <(lhs: URL, rhs: URL) -> Bool {
+        return lhs.level < rhs.level
+    }
+    
+    /**
+     Returns a Boolean value indicating whether the two URLs have the same amount of path components
+     
+     - parameters:
+        - lhs: A value to compare.
+        - rhs: Another value to compare.
+     */
+    static public func ==(lhs: URL, rhs: URL) -> Bool {
+        return lhs.level == rhs.level
+    }
+    
+    /**
+     Returns a Boolean value indicating whether the path components of the first argument is more than or equal to that of the second argument.
+     
+     - parameters:
+        - lhs: A value to compare.
+        - rhs: Another value to compare.
+     */
+    static public func >=(lhs: URL, rhs: URL) -> Bool {
+        return lhs.level >= rhs.level
+    }
+    
+    /**
+     Returns a Boolean value indicating whether the path components of the first argument is less than or equal to that of the second argument.
+     
+     - parameters:
+        - lhs: A value to compare.
+        - rhs: Another value to compare.
+     */
+    static public func <=(lhs: URL, rhs: URL) -> Bool {
+        return lhs.level <= rhs.level
+    }
 }
